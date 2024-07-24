@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,21 +33,17 @@ use Illuminate\Support\Facades\Route;
 //     dd($request->city);
 // });
 
-
+// All Listing
 Route::get('/',function(){
     return view('listings', [
         'heading' => 'Latest Listings',
-        'listings' => [
-            [
-                'id' => 1,
-                'title' => 'Listing-One',
-                'description' => 'PHP And Laravel Developer'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Listing-Two',
-                'description' => 'PHP And Python Developer'
-            ]
-            ]
+        'listings' => Listing::jobs()
+    ]);
+});
+
+// Single Listing
+Route::get('/listings/{id}',function($id){
+    return view('listing',[
+        'listing' => Listing::find($id)
     ]);
 });
