@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/posts',function(){
+    return response()->json([
+        'posts' => [
+            'title' => 'Lord of the rings'
+        ]
+        ]);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
