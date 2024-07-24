@@ -14,20 +14,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/hello',function(){
-    return '<h1>Hello World!</h1>';
-});
-Route::get('/posts/{id}',function($id){
-    dd($id); // die and dump very useful in debugging
-    // ddd($id);
-    return response('Post ' . $id);
-})->where('id','[0-9]+');
+// Route::get('/hello',function(){
+//     return '<h1>Hello World!</h1>';
+// });
+// Route::get('/posts/{id}',function($id){
+//     dd($id); // die and dump very useful in debugging
+//     // ddd($id);
+//     return response('Post ' . $id);
+// })->where('id','[0-9]+');
 
-Route::get('/search',function(Request $request){
-    dd($request->name);
-    dd($request->city);
+// Route::get('/search',function(Request $request){
+//     dd($request->name);
+//     dd($request->city);
+// });
+
+
+Route::get('/',function(){
+    return view('listings', [
+        'heading' => 'Latest Listings',
+        'listings' => [
+            [
+                'id' => 1,
+                'title' => 'Listing-One',
+                'description' => 'PHP And Laravel Developer'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Listing-Two',
+                'description' => 'PHP And Python Developer'
+            ]
+            ]
+    ]);
 });
