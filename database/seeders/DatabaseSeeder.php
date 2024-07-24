@@ -20,15 +20,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Listing::create([
-            'title' => 'Laravel Senior Developer',
-            'tags' => 'JavaScript,Python,PHP',
-            'company' => 'Acme Corp',
-            'location' => 'Boston, USA',
-            'email' => 'email@gmail.com',
-            'website' => 'www.acme.com',
-            'description' => 'Our Company requires an Experienced and Passionate Software Engineer!'
+        // Listing::create([
+        //     'title' => 'Laravel Senior Developer',
+        //     'tags' => 'JavaScript,Python,PHP',
+        //     'company' => 'Acme Corp',
+        //     'location' => 'Boston, USA',
+        //     'email' => 'email@gmail.com',
+        //     'website' => 'www.acme.com',
+        //     'description' => 'Our Company requires an Experienced and Passionate Software Engineer!'
 
-        ]);
+        // ]);
+        Listing::factory(10)->create();
     }
 }
