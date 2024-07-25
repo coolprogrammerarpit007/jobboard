@@ -62,3 +62,8 @@ Route::get('/create',function(){
 });
 
 Route::post('/create',[ListingController::class,'create']);
+Route::get('/manage',function(){
+    $listing = Listing::all();
+    $data = compact('listing');
+    return view('manage')->with($data);
+});

@@ -38,7 +38,7 @@ class ListingController extends Controller
         $listing->website = $request['website'];
         $listing->description = $request['description'];
         $listing->save();
-        return redirect('/');
+        return redirect('manage');
     }
 
     /**
