@@ -62,7 +62,13 @@ class ListingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $listing = Listing::find($id);
+        if($listing){
+            $data = compact('listing');
+            return view('edit')->with($data);
+        }else{
+            abort('404');
+        }
     }
 
     /**

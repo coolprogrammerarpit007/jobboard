@@ -31,7 +31,7 @@
                             class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                         >
                             <a
-                                href="edit.html"
+                                href="/edit/{{$item->id}}"
                                 class="text-blue-400 px-6 py-2 rounded-xl"
                                 ><i
                                     class="fa-solid fa-pen-to-square"

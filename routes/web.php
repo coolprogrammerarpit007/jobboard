@@ -67,3 +67,5 @@ Route::get('/manage',function(){
     $data = compact('listing');
     return view('manage')->with($data);
 });
+
+Route::get('edit/{id}',[ListingController::class,'edit']);
