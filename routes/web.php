@@ -52,7 +52,6 @@ Route::get('/listings/{id}',function($id){
             'listing' => $listing
         ]);
     }else{
-        return "<h1>Page Not Found</>";
+        abort('404');
     }
-    
 });
