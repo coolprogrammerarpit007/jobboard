@@ -14,7 +14,7 @@
                 </h2>
                 <p class="mb-4">Edit: Senior Developer</p>
             </header>
-            <form action="{{ url('/') }}/edit/submit" method="POST">
+            <form action="{{ url('/') }}/edit/submit/{{$listing->id}}" method="POST">
                 @csrf
                 <div class="mb-6">
                     <label for="company" class="inline-block text-lg mb-2">Company Name</label>
@@ -74,11 +74,8 @@
                 </div>
 
                 <div class="mb-6">
-                    <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black text-lg">
-                        Create Gig
-                    </button>
-
-                    <a href="dashboard.html" class="text-black ml-4">
+                    <input type="submit" value="Edit Your Gig" class="bg-[green] text-white rounded p-4">
+                    <a href="/manage" class="text-black ml-4">
                         Back
                     </a>
                 </div>
