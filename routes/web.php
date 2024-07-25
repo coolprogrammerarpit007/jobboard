@@ -55,3 +55,7 @@ Route::get('/listings/{id}',function($id){
         abort('404');
     }
 });
+
+Route::get('/create',function(){
+    return view('create');
+});
