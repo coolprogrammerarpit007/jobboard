@@ -37,7 +37,9 @@
             </li>
         </ul>
     </nav>
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 </body>
 
 </html>
