@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,7 +46,13 @@ Route::get('/',function(){
 
 // Single Listing
 Route::get('/listings/{id}',function($id){
-    return view('listing',[
-        'listing' => Listing::find($id)
-    ]);
+    $listing = Listing::find($id);
+    if($listing){
+        return view('listing',[
+            'listing' => $listing
+        ]);
+    }else{
+        return "<h1>Page Not Found</>";
+    }
+    
 });
