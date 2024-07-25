@@ -11,7 +11,8 @@
             <p class="mb-4">Post a gig to find a developer</p>
         </header>
 
-        <form action="">
+        <form action="{{url('/')}}/create" method="POST">
+            @csrf
             <div class="mb-6">
                 <label
                     for="company"
@@ -115,11 +116,8 @@
             </div>
 
             <div class="mb-6">
-                <button
-                    class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
-                >
-                    Create Gig
-                </button>
+                <input type="submit" value="Create Gig" class="p-[1rem] bg-[red] text-white rounded capitalize">
+                </input>
 
                 <a href="/" class="text-black ml-4"> Back </a>
             </div>

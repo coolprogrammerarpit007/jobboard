@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
@@ -59,3 +60,5 @@ Route::get('/listings/{id}',function($id){
 Route::get('/create',function(){
     return view('create');
 });
+
+Route::post('/create',[ListingController::class,'create']);
