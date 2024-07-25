@@ -105,6 +105,10 @@ class ListingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $listing = Listing::find($id);
+        if($listing){
+            $listing->destroy($id);
+            return redirect('manage');
+        }
     }
 }

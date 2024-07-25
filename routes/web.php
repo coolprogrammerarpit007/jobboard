@@ -70,3 +70,4 @@ Route::get('/manage',function(){
 
 Route::get('edit/{id}',[ListingController::class,'edit']);
 Route::post('edit/submit/{id}',[ListingController::class,'update']);
+Route::get('delete/{id}',[ListingController::class,'destroy']);
