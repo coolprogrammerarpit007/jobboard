@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\ListingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,7 @@ use function PHPUnit\Framework\isNull;
 // });
 
 // All Listing
-Route::get('/',[ListingController::class,'show']);
+Route::get('/home',[ListingController::class,'show']);
 
 // Single Listing
 Route::get('/listings/{id}',[ListingController::class,'index']);
@@ -57,3 +58,11 @@ Route::get('/manage',function(){
 Route::get('edit/{id}',[ListingController::class,'edit']);
 Route::post('edit/submit/{id}',[ListingController::class,'update']);
 Route::get('delete/{id}',[ListingController::class,'destroy']);
+
+
+// Routing for the Authentication
+Route::get('/register',[LoginRegisterController::class,'registration']);
+Route::get('/',[LoginRegisterController::class,'index']);
+
+Route::post('/register',[LoginRegisterController::class,'store']);
+Route::post('/login',[LoginRegisterController::class,'authenticate']);
