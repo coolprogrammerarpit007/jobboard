@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Listing;
+use Illuminate\Http\Request;
+
 class ListingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request,$id)
     {
-        //
+        $listing = Listing::find($id);
+        if ($listing) {
+            return view('listing', [
+                'listing' => $listing,
+            ]);
+        } else {
+            abort('404');
+        }
     }
 
     /**
@@ -63,10 +71,10 @@ class ListingController extends Controller
     public function edit(string $id)
     {
         $listing = Listing::find($id);
-        if($listing){
+        if ($listing) {
             $data = compact('listing');
             return view('edit')->with($data);
-        }else{
+        } else {
             abort('404');
         }
     }
@@ -86,7 +94,7 @@ class ListingController extends Controller
             'description' => 'required',
         ]);
         $listing = Listing::find($id);
-        if($listing){
+        if ($listing) {
             $listing->title = $request['title'];
             $listing->tags = $request['tags'];
             $listing->company = $request['company'];
@@ -106,7 +114,7 @@ class ListingController extends Controller
     public function destroy(string $id)
     {
         $listing = Listing::find($id);
-        if($listing){
+        if ($listing) {
             $listing->destroy($id);
             return redirect('manage');
         }

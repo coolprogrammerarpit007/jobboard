@@ -46,16 +46,7 @@ Route::get('/',function(){
 });
 
 // Single Listing
-Route::get('/listings/{id}',function($id){
-    $listing = Listing::find($id);
-    if($listing){
-        return view('listing',[
-            'listing' => $listing
-        ]);
-    }else{
-        abort('404');
-    }
-});
+Route::get('/listings/{id}',[ListingController::class,'index']);
 
 Route::get('/create',function(){
     return view('create');
