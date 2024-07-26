@@ -38,12 +38,7 @@ use function PHPUnit\Framework\isNull;
 // });
 
 // All Listing
-Route::get('/',function(){
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/',[ListingController::class,'show']);
 
 // Single Listing
 Route::get('/listings/{id}',[ListingController::class,'index']);

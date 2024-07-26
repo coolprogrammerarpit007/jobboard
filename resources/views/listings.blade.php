@@ -17,6 +17,7 @@
                 @foreach ($listings as $listing)
                 <x-listings-card :listing="$listing" />
                 @endforeach
+                {{$listings->links()}}
             @else
                 <h3 class="">There are No Job Listings</h3>
             @endif

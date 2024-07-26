@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ListingController extends Controller
 {
@@ -21,6 +23,17 @@ class ListingController extends Controller
             abort('404');
         }
     }
+    /**
+     * Display the specified resource.
+     */
+    public function show()
+    {
+        return view('listings', [
+            'heading' => 'Latest Listings',
+            'listings' => Listing::paginate(5)
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +45,7 @@ class ListingController extends Controller
             'tags' => 'required',
             'company' => 'required',
             'location' => 'required',
-            'email' => 'required',
+            'email' => ['required', Rule::unique('listings')],
             'website' => 'required',
             'description' => 'required',
         ]);
@@ -46,6 +59,8 @@ class ListingController extends Controller
         $listing->website = $request['website'];
         $listing->description = $request['description'];
         $listing->save();
+        // \Alert::success('Job Listing Created Sucessfully')->flash();
+        // Alert::error('Error')->flash();
         return redirect('manage');
     }
 
@@ -57,14 +72,7 @@ class ListingController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
