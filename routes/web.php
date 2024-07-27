@@ -75,11 +75,11 @@ Route::get('/register',[LoginRegisterController::class,'registration']);
 Route::post('/register',[LoginRegisterController::class,'store']);
 // Route::post('/login',[LoginRegisterController::class,'authenticate']);
 
-// Route to logout user from the system
+// Route to logout user from the system 
 Route::post('/logout',[LoginRegisterController::class,'logout']);
 
 // Route to show the login form to the user
-Route::get('/login',[LoginRegisterController::class,'login']);
+Route::get('/login',[LoginRegisterController::class,'login'])->name('login');
 // Route to submit the user details
 Route::post('/login',[LoginRegisterController::class,'authenticate']);
 
