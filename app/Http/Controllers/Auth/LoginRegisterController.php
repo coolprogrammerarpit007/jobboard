@@ -55,7 +55,10 @@ class LoginRegisterController extends Controller
 
     public function logout(Request $request)
     {
-        
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/home')->with('message','You have logged out');
     }    
 
 }
