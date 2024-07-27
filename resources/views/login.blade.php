@@ -43,7 +43,7 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="password"
                 />
-                <p>
+                <p class="text-red-500">
                     @error('password')
                         {{$message}}
                     @enderror

@@ -11,10 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
 {
-    // Instantiate a new LoginRegisterController Instance.
-    public function __construct()
-    {
-    }
+   
 
     // Display a registration form.
     public function registration(){
@@ -39,8 +36,17 @@ class LoginRegisterController extends Controller
         // Login
         auth()->login($user);
 
-        return redirect('/home')->with('message','User created and logged in sucessfully');
+        return redirect('/')->with('message','User created and logged in sucessfully');
     }
+
+    // Logout Function
+    public function logout(Request $request){
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message','You have logged out');
+    }    
+
 
     // Display a login form
     public function login(){
@@ -56,22 +62,16 @@ class LoginRegisterController extends Controller
         ]);
         if(auth()->attempt($formFields)){
             $request->session()->regenerate();
-            return redirect('/home')->with('You are now logged in');
+            return redirect('/')->with('You are now logged in');
         }
         else{
-            return back()->withErrors(['email' => 'Invalid Credentials']);
+            return back()->withErrors(['email' => 'Invalid Credentials','password' => 'Invalid Credentials']);
         }
     }
 
 
-    public function logout(Request $request)
-    {
-        auth()->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/home')->with('message','You have logged out');
-    }    
-
+    
 }
+
 
 

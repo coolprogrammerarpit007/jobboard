@@ -38,39 +38,48 @@ use function PHPUnit\Framework\isNull;
 //     dd($request->city);
 // });
 
-// All Listing
-Route::get('/',[ListingController::class,'show'])->name('home');
+// Route to show the all job listings
+Route::get('/',[ListingController::class,'show']);
 
+// Route to show the single job listing
 // Single Listingcls
 Route::get('/listings/{id}',[ListingController::class,'index']);
 
+// Route to show job gig create form
 Route::get('/create',function(){
     return view('create');
-})->middleware('auth');
+});
 
+// Route to submit create job form
 Route::post('/create',[ListingController::class,'create']);
+
+// Route to show the manage job listing
 Route::get('/manage',function(){
     $listing = Listing::all();
     $data = compact('listing');
     return view('manage')->with($data);
 });
 
-Route::get('edit/{id}',[ListingController::class,'edit'])->middleware('auth');
+// Route to show the form to edit the job listing
+Route::get('edit/{id}',[ListingController::class,'edit']);
+// Route to submit edit listing form
 Route::post('edit/submit/{id}',[ListingController::class,'update']);
-Route::get('delete/{id}',[ListingController::class,'destroy'])->middleware('auth');
+// Route to destroy a job listing
+Route::get('delete/{id}',[ListingController::class,'destroy']);
 
 
-// Routing for the Authentication
-Route::get('/register',[LoginRegisterController::class,'registration'])->middleware('guest');
-// Route::get('/',[LoginRegisterController::class,'index'])
+// Route to show the registration form job listing
+Route::get('/register',[LoginRegisterController::class,'registration']);
 
+// Route to submit the user registration details of the form
 Route::post('/register',[LoginRegisterController::class,'store']);
-Route::post('/login',[LoginRegisterController::class,'authenticate']);
+// Route::post('/login',[LoginRegisterController::class,'authenticate']);
 
-// log out
-Route::post('/logout',[LoginRegisterController::class,'logout'])->middleware('auth');
+// Route to logout user from the system
+Route::post('/logout',[LoginRegisterController::class,'logout']);
 
-// Login
-Route::get('/login',[LoginRegisterController::class,'login'])->name('login')->middleware('guest');
+// Route to show the login form to the user
+Route::get('/login',[LoginRegisterController::class,'login']);
+// Route to submit the user details
 Route::post('/login',[LoginRegisterController::class,'authenticate']);
 

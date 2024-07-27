@@ -64,13 +64,7 @@ class ListingController extends Controller
         return redirect('manage');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    
 
     
     /**
