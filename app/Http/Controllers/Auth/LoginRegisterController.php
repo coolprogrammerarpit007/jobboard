@@ -43,13 +43,24 @@ class LoginRegisterController extends Controller
     }
 
     // Display a login form
-    public function index(){
+    public function login(){
         return view('login');
     }
 
     // Authenticate the user
     public function authenticate(Request $request)
     {
+        $formFields = $request->validate([
+            'email' => ['required','email'],
+            'password' => 'required'
+        ]);
+        if(auth()->attempt($formFields)){
+            $request->session()->regenerate();
+            return redirect('/home')->with('You are now logged in');
+        }
+        else{
+            return back()->withErrors(['email' => 'Invalid Credentials']);
+        }
     }
 
 

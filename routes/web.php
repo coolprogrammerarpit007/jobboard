@@ -39,14 +39,14 @@ use function PHPUnit\Framework\isNull;
 // });
 
 // All Listing
-Route::get('/home',[ListingController::class,'show']);
+Route::get('/',[ListingController::class,'show'])->name('home');
 
-// Single Listing
+// Single Listingcls
 Route::get('/listings/{id}',[ListingController::class,'index']);
 
 Route::get('/create',function(){
     return view('create');
-});
+})->middleware('auth');
 
 Route::post('/create',[ListingController::class,'create']);
 Route::get('/manage',function(){
@@ -55,18 +55,22 @@ Route::get('/manage',function(){
     return view('manage')->with($data);
 });
 
-Route::get('edit/{id}',[ListingController::class,'edit']);
+Route::get('edit/{id}',[ListingController::class,'edit'])->middleware('auth');
 Route::post('edit/submit/{id}',[ListingController::class,'update']);
-Route::get('delete/{id}',[ListingController::class,'destroy']);
+Route::get('delete/{id}',[ListingController::class,'destroy'])->middleware('auth');
 
 
 // Routing for the Authentication
-Route::get('/register',[LoginRegisterController::class,'registration']);
-Route::get('/',[LoginRegisterController::class,'index']);
+Route::get('/register',[LoginRegisterController::class,'registration'])->middleware('guest');
+// Route::get('/',[LoginRegisterController::class,'index'])
 
 Route::post('/register',[LoginRegisterController::class,'store']);
 Route::post('/login',[LoginRegisterController::class,'authenticate']);
 
 // log out
+Route::post('/logout',[LoginRegisterController::class,'logout'])->middleware('auth');
 
-Route::post('/logout',[LoginRegisterController::class,'logout']);
+// Login
+Route::get('/login',[LoginRegisterController::class,'login'])->name('login')->middleware('guest');
+Route::post('/login',[LoginRegisterController::class,'authenticate']);
+

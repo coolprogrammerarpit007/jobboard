@@ -22,9 +22,10 @@
                     type="email"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="email"
+                    value="{{old('email')}}"
                 />
-                <p>
-                    @error('{{$type}}')
+                <p class="text-red-500 ">
+                    @error('email')
                         {{$message}}
                     @enderror
                 </p>
@@ -43,7 +44,7 @@
                     name="password"
                 />
                 <p>
-                    @error('{{$type}}')
+                    @error('password')
                         {{$message}}
                     @enderror
                 </p>

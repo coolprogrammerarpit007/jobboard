@@ -46,7 +46,7 @@
                 <div class="mt-8">
                     <p>
                         Already have an account?
-                        <a href="/" class="text-laravel">Login</a>
+                        <a href="/login" class="text-laravel">Login</a>
                     </p>
                 </div>
             </form>
