@@ -67,8 +67,6 @@ class ListingController extends Controller
             $listing->website = $request['website'];
             $listing->description = $request['description'];
             $listing->save();
-            // \Alert::success('Job Listing Created Sucessfully')->flash();
-            // Alert::error('Error')->flash();
             return redirect('manage');
         } else {
             return redirect('/login');

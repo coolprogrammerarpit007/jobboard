@@ -11,7 +11,7 @@
             <p class="mb-4">Post a gig to find a developer</p>
         </header>
 
-        <form action="{{url('/')}}/create" method="POST">
+        <form action="{{url('/')}}/create" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                 <label
@@ -86,17 +86,6 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="tags"
                     placeholder="Example: Laravel, Backend, Postgres, etc"
-                />
-            </div>
-
-            <div class="mb-6">
-                <label for="logo" class="inline-block text-lg mb-2">
-                    Company Logo
-                </label>
-                <input
-                    type="file"
-                    class="border border-gray-200 rounded p-2 w-full"
-                    name="logo"
                 />
             </div>
 
